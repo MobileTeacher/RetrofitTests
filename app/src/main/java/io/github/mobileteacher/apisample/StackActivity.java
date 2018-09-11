@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,12 +21,15 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.view.View.GONE;
+
 public class StackActivity extends AppCompatActivity implements Callback<ResponseBody> {
 
     Retrofit retrofit;
     private final String BASE_URL = "https://api.stackexchange.com/2.2/";
     Call<ListWrapper<Question>> call;
     Call<ResponseBody> rawCall;
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,12 +43,15 @@ public class StackActivity extends AppCompatActivity implements Callback<Respons
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(BASE_URL).build();
 
+        progressBar = findViewById(R.id.progressBar);
+
     }
 
 
     public void getData(View view){
         StackAPI stackAPI = retrofit.create(StackAPI.class);
         EditText editText = findViewById(R.id.url_field);
+        progressBar.setVisibility(View.VISIBLE);
         rawCall = stackAPI.loadRawQuestions("android", editText.getText().toString());
         rawCall.enqueue(this);
 
@@ -63,11 +70,13 @@ public class StackActivity extends AppCompatActivity implements Callback<Respons
 
                 TextView textView = findViewById(R.id.cool_response);
                 textView.setText(questionsData);
+                progressBar.setVisibility(GONE);
             }
 
             @Override
             public void onFailure(Call<ListWrapper<Question>> call, Throwable t) {
                 Toast.makeText(StackActivity.this, t.getMessage(), Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(GONE);
             }
         });
 
