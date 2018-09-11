@@ -15,10 +15,10 @@ public class RetrofitManager {
         if (retrofitInstance == null){
 
             Gson gson = new GsonBuilder()
-                    .setLenient()
+                    //.registerTypeAdapter(GithubRepo.class, new GithubRepoDeserializer())
                     .create();
-            retrofitInstance = new Retrofit.Builder().
-                    addConverterFactory(GsonConverterFactory.create(gson))
+            retrofitInstance = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .baseUrl(BASE_URL).build();
         }
         return retrofitInstance;

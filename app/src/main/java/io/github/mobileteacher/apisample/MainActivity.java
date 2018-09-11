@@ -32,6 +32,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToStackAPI(View view){
-        startActivity(new Intent(this, GithubAPIActivity.class));
+        startActivity(new Intent(this, StackActivity.class));
     }
 }

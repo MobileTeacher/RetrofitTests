@@ -5,6 +5,7 @@ public class GithubRepo {
     private int id;
     private String name;
     private String description;
+    //private String owner;
 
     public int getId() {
         return id;
@@ -17,6 +18,14 @@ public class GithubRepo {
     public String getName() {
         return name;
     }
+
+//    public String getOwner() {
+//        return owner;
+//    }
+//
+//    public void setOwner(String owner) {
+//        this.owner = owner;
+//    }
 
     public void setName(String name) {
         this.name = name;

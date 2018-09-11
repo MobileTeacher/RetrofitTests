@@ -54,6 +54,7 @@ public class GithubAPIActivity extends AppCompatActivity {
                 for ( GithubRepo repository: response.body()) {
                     repos += String.format("%d %s\n%s\n\n",
                             repository.getId(),
+                            //repository.getOwner(),
                             repository.getName(),
                             repository.getDescription());
                 }
@@ -64,7 +65,9 @@ public class GithubAPIActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<GithubRepo>> call, Throwable t) {
-
+                Toast.makeText(GithubAPIActivity.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                TextView textView = findViewById(R.id.cool_response);
+                textView.setText("XABU");
             }
         });
 

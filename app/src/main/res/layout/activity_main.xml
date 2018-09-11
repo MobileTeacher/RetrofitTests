@@ -27,18 +27,15 @@
             android:id="@+id/async_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AsyncTask + HttpConnection"/>
+            android:text="AsyncTask + HttpConnection"
+            android:onClick="goToAsyncExample"/>
 
         <Button
             android:id="@+id/retrofit_github_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Retrofit Github"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Entrar"/>
+            android:text="Retrofit Github"
+            android:onClick="goToGithubAPI"/>
 
         <Button
             android:layout_width="match_parent"
