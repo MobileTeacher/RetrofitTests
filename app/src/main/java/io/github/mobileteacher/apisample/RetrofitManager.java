@@ -14,11 +14,11 @@ public class RetrofitManager {
     public static Retrofit getInstance(){
         if (retrofitInstance == null){
 
-            Gson gson = new GsonBuilder()
-                    .setLenient()
-                    .create();
-            retrofitInstance = new Retrofit.Builder().
-                    addConverterFactory(GsonConverterFactory.create(gson))
+//            Gson gson = new GsonBuilder()
+//                    .setLenient()
+//                    .create();
+            retrofitInstance = new Retrofit.Builder()
+                    .addConverterFactory(GsonConverterFactory.create())
                     .baseUrl(BASE_URL).build();
         }
         return retrofitInstance;
