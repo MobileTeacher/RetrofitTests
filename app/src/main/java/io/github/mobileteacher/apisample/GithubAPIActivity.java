@@ -24,12 +24,14 @@ public class GithubAPIActivity extends AppCompatActivity {
     Call<ResponseBody> rawCall;
     Call<List<GithubRepo>> call;
     private ProgressBar progressBar;
+    private final String BASE_URL = "https://api.github.com/";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_network);
 
-        retrofit = RetrofitManager.getInstance();
+        retrofit = RetrofitManager.getInstance(BASE_URL);
 
         githubAPI = retrofit.create(GithubAPI.class);
 

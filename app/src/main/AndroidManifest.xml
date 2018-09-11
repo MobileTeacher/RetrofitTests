@@ -19,9 +19,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".NetworkActivity"></activity>
-        <activity android:name=".GithubAPIActivity">
+        <activity android:name=".GithubAPIActivity"
+            android:label="GitHub API Activity">
         </activity>
-        <activity android:name=".StackActivity"></activity>
+        <activity android:name=".StackActivity"
+            android:label="StackOverflow API Activity"></activity>
     </application>
 
 </manifest>
