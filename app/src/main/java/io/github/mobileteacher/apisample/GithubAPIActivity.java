@@ -52,9 +52,9 @@ public class GithubAPIActivity extends AppCompatActivity {
                 String repos = "";
 
                 for ( GithubRepo repository: response.body()) {
-                    repos += String.format("%d %s\n%s\n\n",
+                    repos += String.format("%d %s\n%s\n%s\n\n",
                             repository.getId(),
-                            //repository.getOwner(),
+                            repository.getOwner().getName(),
                             repository.getName(),
                             repository.getDescription());
                 }

@@ -15,7 +15,7 @@ public class RetrofitManager {
         if (retrofitInstance == null){
 
             Gson gson = new GsonBuilder()
-                    //.registerTypeAdapter(GithubRepo.class, new GithubRepoDeserializer())
+                    .registerTypeAdapter(Owner.class, new GithubOwnerDeserializer())
                     .create();
             retrofitInstance = new Retrofit.Builder()
                     .addConverterFactory(GsonConverterFactory.create(gson))

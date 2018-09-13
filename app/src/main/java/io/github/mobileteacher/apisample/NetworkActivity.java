@@ -8,10 +8,14 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -78,6 +82,15 @@ public class NetworkActivity extends AppCompatActivity {
 
             TextView textView = findViewById(R.id.raw_response);
             textView.setText(result);
+
+            textView = findViewById(R.id.cool_response);
+
+            Gson gson = new GsonBuilder()
+                    .registerTypeAdapter(GithubRepo.class, new GithubRepoDeserializer())
+                    .create();
+
+            GithubRepo repo = gson.fromJson(result, GithubRepo.class);
+            textView.setText(repo.getName());
 
         }
     }
